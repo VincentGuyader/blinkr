@@ -11,10 +11,9 @@
 get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="export",host="prde.immedia-semi.com"){
 
   accountID <- accountid
-  pageNum<-1
 
   for (pageNum in 1:1000){
-
+    message(paste("pageNum",pageNum))
     uri <-  glue::glue('https://rest-{region}.immedia-semi.com/api/v1/accounts/{accountID}/media/changed?since=2015-04-19T23:11:20+0000&page={pageNum}')
 
     GET(url = uri,
@@ -26,7 +25,7 @@ get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="e
         ,encode = "json"
     ) %>% content() -> response
 
-
+    if (length(response$media)==0){break}
     for (video in response$media){
 
       address <- video$media
@@ -41,24 +40,25 @@ get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="e
       path <- file.path(output_dir,network,camera) %>% str_replace_all(" ","")
       dir.create(path,recursive = TRUE,showWarnings = FALSE)
       videoPath <-  file.path(path,glue::glue("{str_trim(camera)}_{make.names(videoTime)}.mp4"))
-# browser()
+      # browser()
 
 
-     if (!file.exists(videoPath)){
-      GET(url = videoURL,
-          add_headers(
-            "Host" = host ,
-            "TOKEN_AUTH"= token
-          )
-          # ,verbose()
-          ,encode = "json"
-      ) ->k8
-      message(videoPath)
-      conn <- file(videoPath,"wb")
-      writeBin(k8$content, conn)
-      close(conn)
-    }
+      if (!file.exists(videoPath)){
+        GET(url = videoURL,
+            add_headers(
+              "Host" = host ,
+              "TOKEN_AUTH"= token
+            )
+            # ,verbose()
+            ,encode = "json"
+        ) ->k8
+        message(videoPath)
+        conn <- file(videoPath,"wb")
+        writeBin(k8$content, conn)
+        close(conn)
+      }
     }
   }
-  }
+  message("done")
+}
 
