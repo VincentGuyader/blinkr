@@ -1,3 +1,4 @@
+#' @export
 #' @importFrom jpeg writeJPEG
 #' @importFrom stringr str_split str_replace_all
 get_thumbnails <-function(camera,token=get_blink_api_token(),output_dir = "export",
