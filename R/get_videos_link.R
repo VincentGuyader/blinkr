@@ -1,4 +1,4 @@
-#' get_videos
+#' get_video
 #'
 #' @param accountid
 #' @param region
@@ -8,11 +8,10 @@
 #' @importFrom stringr str_trim
 #' @export
 #'
-get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="export",host="prde.immedia-semi.com"){
-
+get_videos_link<- function(accountid,region,token=get_blink_api_token(),output_dir="export",host="prde.immedia-semi.com",max_pages=1000){
   accountID <- accountid
 
-  for (pageNum in 1:1000){
+  for (pageNum in seq_len(max_pages)){
     message(paste("pageNum",pageNum))
     uri <-  glue::glue('https://rest-{region}.immedia-semi.com/api/v1/accounts/{accountID}/media/changed?since=2015-04-19T23:11:20+0000&page={pageNum}')
 
@@ -24,6 +23,8 @@ get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="e
         # ,verbose()
         ,encode = "json"
     ) %>% content() -> response
+
+    out <- list()
 
     if (length(response$media)==0){break}
     for (video in response$media){
@@ -42,23 +43,26 @@ get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="e
       videoPath <-  file.path(path,glue::glue("{str_trim(camera)}_{make.names(videoTime)}.mp4"))
       # browser()
 
+out[videoPath] <- videoURL
 
-      if (!file.exists(videoPath)){
-        GET(url = videoURL,
-            add_headers(
-              "Host" = host ,
-              "TOKEN_AUTH"= token
-            )
-            # ,verbose()
-            ,encode = "json"
-        ) ->k8
-        message(videoPath)
-        conn <- file(videoPath,"wb")
-        writeBin(k8$content, conn)
-        close(conn)
-      }
+
+      # if (!file.exists(videoPath)){
+      #   GET(url = videoURL,
+      #       add_headers(
+      #         "Host" = host ,
+      #         "TOKEN_AUTH"= token
+      #       )
+      #       # ,verbose()
+      #       ,encode = "json"
+      #   ) ->k8
+      #   message(videoPath)
+      #   conn <- file(videoPath,"wb")
+      #   writeBin(k8$content, conn)
+      #   close(conn)
+      # }
     }
   }
   message("done")
+  out
 }
 
