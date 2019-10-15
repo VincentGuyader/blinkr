@@ -29,7 +29,7 @@ get_videos_link<- function(accountid,region,token=get_blink_api_token(),output_d
 
 
 
-    # if (length(response$media)==0){break}
+    if (length(response$media)==0){break}
     for (video in response$media){
 
       address <- video$media
