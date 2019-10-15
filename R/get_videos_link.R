@@ -11,6 +11,9 @@
 get_videos_link<- function(accountid,region,token=get_blink_api_token(),output_dir="export",host="prde.immedia-semi.com",max_pages=1000){
   accountID <- accountid
 
+
+  out <- list()
+
   for (pageNum in seq_len(max_pages)){
     message(paste("pageNum",pageNum))
     uri <-  glue::glue('https://rest-{region}.immedia-semi.com/api/v1/accounts/{accountID}/media/changed?since=2015-04-19T23:11:20+0000&page={pageNum}')
@@ -24,9 +27,9 @@ get_videos_link<- function(accountid,region,token=get_blink_api_token(),output_d
         ,encode = "json"
     ) %>% content() -> response
 
-    out <- list()
 
-    if (length(response$media)==0){break}
+
+    # if (length(response$media)==0){break}
     for (video in response$media){
 
       address <- video$media
