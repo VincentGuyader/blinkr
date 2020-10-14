@@ -18,7 +18,7 @@ get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="e
 
     GET(url = uri,
         add_headers(
-          "Host" = host ,
+          # "Host" = host ,
           "TOKEN_AUTH"= token
         )
         # ,verbose()
@@ -42,11 +42,11 @@ get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="e
       videoPath <-  file.path(path,glue::glue("{str_trim(camera)}_{make.names(videoTime)}.mp4"))
       # browser()
 
-
+# browser()
       if (!file.exists(videoPath)){
         GET(url = videoURL,
             add_headers(
-              "Host" = host ,
+              # "Host" = host ,
               "TOKEN_AUTH"= token
             )
             # ,verbose()

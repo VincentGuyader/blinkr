@@ -2,11 +2,16 @@
 % Please edit documentation in R/get_videos.R
 \name{get_videos}
 \alias{get_videos}
-\title{get_video}
+\title{get_videos}
 \usage{
-get_videos(accountid, region, token = get_blink_api_token(),
-  output_dir = "export", host = "prde.immedia-semi.com")
+get_videos(
+  accountid,
+  region,
+  token = get_blink_api_token(),
+  output_dir = "export",
+  host = "prde.immedia-semi.com"
+)
 }
 \description{
-get_video
+get_videos
 }

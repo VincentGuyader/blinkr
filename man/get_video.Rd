@@ -4,8 +4,12 @@
 \alias{get_video}
 \title{Title}
 \usage{
-get_video(videoPath, videoURL, token = get_blink_api_token(),
-  host = "prde.immedia-semi.com")
+get_video(
+  videoURL,
+  videoPath,
+  token = get_blink_api_token(),
+  host = "prde.immedia-semi.com"
+)
 }
 \arguments{
 \item{host}{}

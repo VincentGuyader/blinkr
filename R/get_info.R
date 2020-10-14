@@ -8,13 +8,13 @@
 #' @importFrom magrittr %>%
 #' @importFrom jsonlite fromJSON
 get_info <- function(email,password,
-                     host="prod.immedia-semi.com",
+                     # host="prod.immedia-semi.com",
                      user_agent ="iPhone 9.2 | 2.2 | 222"){
- POST(url = "http://rest.prod.immedia-semi.com/login",
+ POST(url = "https://rest-prod.immedia-semi.com/api/v4/account/login",
        add_headers(
-         "Host" = host ,
-         "Content-Type"= "application/json" ,
-         "Content-Disposition" = "form-data"
+         # "Host" = host ,
+         "Content-Type"= "application/json"# ,
+         # "Content-Disposition" = "form-data"
        ),
        body = list(
          "password" = password,
@@ -29,8 +29,9 @@ get_info <- function(email,password,
   # %>%
   #  # rawToChar() %>%
   #  fromJSON()
- region <- names(info$region)
+ region <- info$region$tier
  token <- info$authtoken$authtoken
  accountid <- info$account$id
- list(token=token, region = region, accountid = accountid)
+ clientid <- info$client$id
+ list(token=token, region = region, accountid = accountid, clientid = clientid)
 }

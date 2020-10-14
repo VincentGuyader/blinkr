@@ -1,6 +1,6 @@
 Package: blinkr
 Title: Connect to amazon home security API
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "vincent",
            family = "GUYADER",
@@ -26,4 +26,4 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0

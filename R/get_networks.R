@@ -6,11 +6,13 @@
 #'
 #' @export
 #' @import purrr
-get_networks <- function(token=get_blink_api_token(),url="https://rest.prde.immedia-semi.com/networks",host ="prde.immedia-semi.com"){
+get_networks <- function(token=get_blink_api_token(),url="https://rest.prde.immedia-semi.com/networks"
+                         # ,host ="prde.immedia-semi.com"
+                         ){
 
   GET(url = url,
       add_headers(
-        "Host" = host ,
+        # "Host" = host ,
         "TOKEN_AUTH"= token
       ),verbose()
       ,encode = "json"
