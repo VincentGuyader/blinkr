@@ -8,8 +8,9 @@
 #' @export
 #'
 get_video<- function(videoURL,videoPath,
-                     token=get_blink_api_token(),
-                     host="prde.immedia-semi.com"){
+                     token=get_blink_api_token()
+                     # ,host="prde.immedia-semi.com"
+                     ){
 
 
   dir.create(dirname(videoPath),
@@ -20,7 +21,7 @@ get_video<- function(videoURL,videoPath,
 if (!file.exists(videoPath)){
   GET(url = videoURL,
       add_headers(
-        "Host" = host ,
+        # "Host" = host ,
         "TOKEN_AUTH"= token
       )
       # ,verbose()

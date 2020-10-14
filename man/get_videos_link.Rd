@@ -4,8 +4,14 @@
 \alias{get_videos_link}
 \title{get_video}
 \usage{
-get_videos_link(accountid, region, token = get_blink_api_token(),
-  output_dir = "export", host = "prde.immedia-semi.com")
+get_videos_link(
+  accountid,
+  region,
+  token = get_blink_api_token(),
+  output_dir = "export",
+  host = "prde.immedia-semi.com",
+  max_pages = 1000
+)
 }
 \description{
 get_video

@@ -4,9 +4,11 @@
 \alias{get_networks}
 \title{get_networks}
 \usage{
-get_networks(token = get_blink_api_token(),
+get_networks(
+  token = get_blink_api_token(),
   url = "https://rest.prde.immedia-semi.com/networks",
-  host = "prde.immedia-semi.com")
+  host = "prde.immedia-semi.com"
+)
 }
 \arguments{
 \item{host}{}

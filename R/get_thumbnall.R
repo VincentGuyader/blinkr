@@ -1,8 +1,9 @@
 #' @export
 #' @importFrom jpeg writeJPEG
 #' @importFrom stringr str_split str_replace_all
-get_thumbnails <-function(camera,token=get_blink_api_token(),output_dir = "export",
-           host = "prde.immedia-semi.com") {
+get_thumbnails <-function(camera,token=get_blink_api_token(),output_dir = "export"
+                          # ,           host = "prde.immedia-semi.com"
+           ) {
     for (network in camera$networks) {
       network_id <-   network$network_id
       networkName <- network$name
@@ -16,7 +17,8 @@ get_thumbnails <-function(camera,token=get_blink_api_token(),output_dir = "expor
 
         cam <- GET(
           url = uri,
-          add_headers("Host" = host ,
+          add_headers(
+            # "Host" = host ,
                       "TOKEN_AUTH" = token)
           # ,verbose()
           ,
@@ -47,7 +49,8 @@ get_thumbnails <-function(camera,token=get_blink_api_token(),output_dir = "expor
           )
           GET(
             url = thumbURL,
-            add_headers("Host" = host ,
+            add_headers(
+              # "Host" = host ,
                         "TOKEN_AUTH" = token)
             # ,verbose()
             ,

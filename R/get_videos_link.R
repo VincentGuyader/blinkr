@@ -8,7 +8,9 @@
 #' @importFrom stringr str_trim
 #' @export
 #'
-get_videos_link<- function(accountid,region,token=get_blink_api_token(),output_dir="export",host="prde.immedia-semi.com",max_pages=1000){
+get_videos_link<- function(accountid,region,token=get_blink_api_token(),output_dir="export"
+                           # ,host="prde.immedia-semi.com"
+                           ,max_pages=1000){
   accountID <- accountid
 
 
@@ -20,7 +22,7 @@ get_videos_link<- function(accountid,region,token=get_blink_api_token(),output_d
 
     GET(url = uri,
         add_headers(
-          "Host" = host ,
+          # "Host" = host ,
           "TOKEN_AUTH"= token
         )
         # ,verbose()

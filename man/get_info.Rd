@@ -4,8 +4,7 @@
 \alias{get_info}
 \title{getinfo}
 \usage{
-get_info(email, password, host = "prod.immedia-semi.com",
-  user_agent = "iPhone 9.2 | 2.2 | 222")
+get_info(email, password, user_agent = "iPhone 9.2 | 2.2 | 222")
 }
 \arguments{
 \item{email}{email}
