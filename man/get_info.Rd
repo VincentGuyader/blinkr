@@ -4,7 +4,12 @@
 \alias{get_info}
 \title{getinfo}
 \usage{
-get_info(email, password, user_agent = "iPhone 9.2 | 2.2 | 222")
+get_info(
+  email,
+  password,
+  user_agent = "iPhone 9.2 | 2.2 | 222",
+  unique_id = "00000000-0000-0000-0000-000000000000"
+)
 }
 \arguments{
 \item{email}{email}

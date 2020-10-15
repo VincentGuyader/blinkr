@@ -9,7 +9,7 @@
 #' @importFrom jsonlite fromJSON
 get_info <- function(email,password,
                      # host="prod.immedia-semi.com",
-                     user_agent ="iPhone 9.2 | 2.2 | 222"){
+                     user_agent ="iPhone 9.2 | 2.2 | 222",unique_id = "00000000-0000-0000-0000-000000000000"){
  POST(url = "https://rest-prod.immedia-semi.com/api/v4/account/login",
        add_headers(
          # "Host" = host ,
@@ -17,6 +17,7 @@ get_info <- function(email,password,
          # "Content-Disposition" = "form-data"
        ),
        body = list(
+         "unique_id" = unique_id,
          "password" = password,
          "client_specifier" = user_agent,
          "email" = email
@@ -26,6 +27,7 @@ get_info <- function(email,password,
 
   info <-  out %>%
     content()
+  print(info)
   # %>%
   #  # rawToChar() %>%
   #  fromJSON()
