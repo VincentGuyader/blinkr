@@ -6,8 +6,7 @@
 \usage{
 get_networks(
   token = get_blink_api_token(),
-  url = "https://rest.prde.immedia-semi.com/networks",
-  host = "prde.immedia-semi.com"
+  url = "https://rest.prde.immedia-semi.com/networks"
 )
 }
 \arguments{
