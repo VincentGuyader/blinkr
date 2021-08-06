@@ -10,7 +10,7 @@
 get_info <- function(email,password,
                      # host="prod.immedia-semi.com",
                      user_agent ="iPhone 9.2 | 2.2 | 222",unique_id = "00000000-0000-0000-0000-000000000000"){
- POST(url = "https://rest-prod.immedia-semi.com/api/v4/account/login",
+ POST(url = "https://rest-prod.immedia-semi.com/api/v5/account/login",
        add_headers(
          # "Host" = host ,
          "Content-Type"= "application/json"# ,
@@ -31,9 +31,9 @@ get_info <- function(email,password,
   # %>%
   #  # rawToChar() %>%
   #  fromJSON()
- region <- info$region$tier
- token <- info$authtoken$authtoken
- accountid <- info$account$id
- clientid <- info$client$id
+ region <- info$account$tier
+ token <- info$auth$token
+ accountid <- info$account$account_id
+ clientid <- info$account$client_id
  list(token=token, region = region, accountid = accountid, clientid = clientid)
 }

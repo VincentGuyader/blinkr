@@ -8,7 +8,7 @@
 #' @importFrom stringr str_trim
 #' @export
 #'
-get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="export",host="prde.immedia-semi.com"){
+get_videos<- function(accountid,region,token=get_blink_api_token(),output_dir="export"){
 
   accountID <- accountid
 
