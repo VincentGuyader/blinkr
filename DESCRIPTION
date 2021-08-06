@@ -6,8 +6,7 @@ Authors@R:
            family = "GUYADER",
            role = c("aut", "cre"),
            email = "vincent@thinkr.fr")
-Description: download all video from blink amazon home
-    security system.
+Description: download all video from blink amazon home security system.
 License: GPL-3
 Depends: 
     R (>= 3.5.1)
@@ -19,11 +18,15 @@ Imports:
     jpeg,
     jsonlite,
     keyring,
+    lubridate,
     magrittr,
     purrr,
     stringr
+Suggests: 
+    knitr,
+    rmarkdown
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

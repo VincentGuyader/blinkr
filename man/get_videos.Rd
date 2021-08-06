@@ -8,8 +8,7 @@ get_videos(
   accountid,
   region,
   token = get_blink_api_token(),
-  output_dir = "export",
-  host = "prde.immedia-semi.com"
+  output_dir = "export"
 )
 }
 \description{
